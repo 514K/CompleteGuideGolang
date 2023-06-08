@@ -47,6 +47,13 @@ func retTemp(temp int) int {
 	return 0
 }
 
+func testDefer() {
+	fmt.Printf("1\n")
+	defer fmt.Printf("3\n")
+	fmt.Printf("2\n")
+	defer fmt.Printf("4\n")
+}
+
 func main() {
 	printSomethink("Hello", ", funcs")
 	printAll("Hello", ",", "funcs")
@@ -76,4 +83,6 @@ func main() {
 	} else {
 		fmt.Printf("U'r is alive\n")
 	}
+
+	testDefer()
 }
