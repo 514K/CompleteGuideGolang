@@ -44,7 +44,7 @@ func retAnonFunc() myFuncs {
 	}
 }
 
-var wtf = 1.23
+var wtf = 1
 
 func currentFunc(val int) func() {
 	return func() {
@@ -89,6 +89,17 @@ func main() {
 	anonFunc()
 	retAnonFunc()()
 
-	staticVal := currentFunc(int(wtf))
+	wtf = 3
+	staticVal1 := currentFunc(int(wtf))
+	wtf = 2
+	staticVal2 := currentFunc(int(wtf))
+	staticVal1()
+	staticVal2()
 
+	wtf = 3
+	actualVal1 := actualFunc(&wtf)
+	wtf = 2
+	actualVal2 := actualFunc(&wtf)
+	actualVal1()
+	actualVal2()
 }
